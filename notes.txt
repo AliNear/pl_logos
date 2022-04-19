@@ -1,0 +1,7 @@
+1-Leicester:
+    __submobject 0
+    __stroke=10
+
+2-Norwich:
+        svg.set_stroke(width=.8)
+        svg.submobjects[0].set_stroke(width=8)
