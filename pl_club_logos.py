@@ -51,3 +51,9 @@ class PLClubLogos(Scene):
             )
             self.wait(.2)
 
+    def transition_higher_lower(self):
+        pass
+
+    def transition_lower_higher(self):
+        pass
+
