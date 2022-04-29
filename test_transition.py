@@ -171,4 +171,42 @@ class AnotherTransition(Scene):
         self.wait(.5)
         
 
- 
+class FadingToVoid(Scene):
+
+    def construct(self):
+        logo_2 = SVGMobject(ASSETS_PATH + "/svg/chelsea.svg")
+        logo_1 = SVGMobject(ASSETS_PATH + "/svg/burnley.svg")
+        logo_3 = SVGMobject(ASSETS_PATH + "/svg/manchester-city.svg")
+        chelsea_color = "#034694"
+        rect = big_rect(chelsea_color)
+        self.add(rect)
+        self.play(
+            FadeIn(logo_1, shift=2*DOWN)
+        )
+
+        fadings = [ApplyMethod(i.set_color, chelsea_color) for i in logo_1.submobjects]
+
+        self.play(
+            LaggedStart(
+                *fadings,
+                rate_func=rush_into,
+                run_time=1.2
+            )
+        )
+        self.wait(.2)
+        burnley_colors = []
+        for i in logo_2.submobjects:
+            burnley_colors.append(i.get_color())
+            # i.set_color(BLACK)
+        
+        appearings = []
+        # self.play(FadeIn(logo_2), run_time=.2)
+
+        self.play(
+            LaggedStart(
+                *[FadeIn(i) for i in logo_2.submobjects],
+                rate_func=rush_into,
+                run_time=3,
+                lag_ratio=.3
+            )
+        )
